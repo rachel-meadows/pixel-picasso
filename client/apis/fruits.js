@@ -2,9 +2,8 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getFruits () {
-  return request.get(rootUrl + '/fruits')
-    .then(res => {
-      return res.body.fruits
-    })
+export function getPixels() {
+  return request.get(rootUrl).then((res) => {
+    return res.body.pixels
+  })
 }

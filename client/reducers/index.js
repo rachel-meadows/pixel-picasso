@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import fruits from './fruits'
+import pixels from './pixels'
 
 export default combineReducers({
-  fruits
+  pixels,
 })
