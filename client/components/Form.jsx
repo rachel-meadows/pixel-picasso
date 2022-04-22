@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { sendArtwork } from '../actions'
-function Form(props) {
+import { useNavigate } from 'react-router-dom'
 
+function Form(props) {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const {pixels} = props
   const [title, setTitle] = useState('')
@@ -14,6 +16,7 @@ function Form(props) {
   function handleSubmit(event) {
     event.preventDefault()
     dispatch(sendArtwork({title, pixels})) 
+    navigate('/gallery')
   }
 
   return (
