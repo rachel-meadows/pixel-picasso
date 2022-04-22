@@ -13,7 +13,7 @@ function Header() {
       <h1 className="mainTitle">Pixel Picasso</h1>
       <ul className="nav__list">
         <li className="nav__list__title">
-          <Link to="/1">Gallery</Link>
+          <Link to="/gallery">Gallery</Link>
         </li>
         <li className="nav__list__title">
           <Link to="/about">About</Link>
