@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchPixels } from '../actions'
 import hash from 'hash-string'
 import Form from './Form'
+import { HexColorPicker, HexColorInput } from "react-colorful";
 
 function Canvas() {
   const dispatch = useDispatch()
@@ -12,12 +13,9 @@ function Canvas() {
 
   const [pixels, setPixels] = useState(Array(400).fill('#ffffff'))
 
-  function handleSubmit(event) {
-    event.preventDefault()
-  }
+  const [colour, setColour] = useState("#000000");
 
   function handleClick(event) {
-    const colour = '#007080'
     const newArray = [...pixels]
     newArray[event.target.id] = colour
     setPixels(newArray)
@@ -26,21 +24,33 @@ function Canvas() {
   return (
     <>
       <div className="container">
-        {/* Outer container - 20x20 */}
-        <div className="canvas">
-          {pixels.map((pixel, index) => (
-            <div
-              key={hash(pixel + Math.random())}
-              id={index}
-              style={{ backgroundColor: pixel }}
-              className="canvas__pixel"
-              onClick={handleClick}
-              draggable={true}
-            ></div>
-          ))}
+
+        <div className='input'>
+          <div>
+            <HexColorPicker color={colour} onChange={setColour} />
+            <HexColorInput color={colour} onChange={setColour} />
+          </div>
+
+          <div className="input__column">
+            <div className="input__canvas">
+              {pixels.map((pixel, index) => (
+                <div
+                  key={hash(pixel + Math.random())}
+                  id={index}
+                  style={{ backgroundColor: pixel }}
+                  className="canvas__pixel"
+                  // onDragEnter={handleClick}
+                  onDragOver={handleClick}
+                  draggable={true}
+                ></div>
+              ))}
+            </div>
+            <Form pixels={pixels} />
+          </div>
+        
         </div>
+
       </div>
-      <Form pixels={pixels} />
     </>
   )
 }
