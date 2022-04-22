@@ -34,6 +34,7 @@
 .canvas__pixel {
   width: 20px;
   height: 20px;
+  border: rgba(176, 176, 176, 0.501) 1px solid;
 }
 
 header {
