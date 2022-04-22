@@ -7,7 +7,6 @@ import { HexColorPicker, HexColorInput } from 'react-colorful'
 
 function Canvas() {
   const dispatch = useDispatch()
-
   const [pixel, setPixel] = useState(1)
 
   useEffect(() => {
