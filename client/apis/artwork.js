@@ -15,3 +15,7 @@ export function getSingleArtwork(id) {
     return res.body
   })
 }
+
+export function postArtwork(artworks) {
+  return (request.post (rootUrl + 'artwork').send(artworks))
+}
