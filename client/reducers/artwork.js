@@ -1,14 +1,16 @@
-// import { SET_FRUITS } from '../actions'
+import { SET_ARTWORK } from '../actions'
 
-// const initialState = []
+const initialState = {
+  pixels: ['#000000'],
+}
 
-// const reducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case SET_FRUITS:
-//       return action.fruits
-//     default:
-//       return state
-//   }
-// }
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_ARTWORK:
+      return action.artwork
+    default:
+      return state
+  }
+}
 
-// export default reducer
+export default reducer
