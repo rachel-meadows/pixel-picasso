@@ -1,11 +1,12 @@
 import React from 'react'
 import Canvas from './Canvas'
+import Header from './Header'
 
-function App () {
-  console.log('hi');
+function App() {
+  console.log('hi')
   return (
     <>
-      <h1>App</h1>
+      <Header />
       {/* <div className='app'></div> */}
       {/* Header */}
       <Canvas />
