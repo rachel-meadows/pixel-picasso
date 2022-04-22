@@ -41,7 +41,6 @@ function Canvas() {
                   id={index}
                   style={{ backgroundColor: pixel }}
                   className="canvas__pixel"
-                  // onDragEnter={handleClick}
                   onDragOver={handleClick}
                   draggable={true}
                 ></div>
