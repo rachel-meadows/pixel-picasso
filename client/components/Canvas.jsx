@@ -11,9 +11,11 @@ function Canvas() {
   const [pixel, setPixel] = useState(1)
 
   useEffect(() => {
+    const audio = new Audio('/music/neigh-3.mp3')
     const newArray = [...pixels]
     newArray[pixel] = colour
     setPixels(newArray)
+    audio.play()
   }, [pixel])
 
   const [pixels, setPixels] = useState(Array(400).fill('#ffffff'))
