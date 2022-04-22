@@ -3,17 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchPixels } from '../actions'
 import hash from 'hash-string'
 import Form from './Form'
-import { HexColorPicker, HexColorInput } from "react-colorful";
+import { HexColorPicker, HexColorInput } from 'react-colorful'
 
 function Canvas() {
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchPixels())
-  }, [])
+  useEffect(() => {}, [])
 
   const [pixels, setPixels] = useState(Array(400).fill('#ffffff'))
 
-  const [colour, setColour] = useState("#000000");
+  const [colour, setColour] = useState('#000000')
 
   function handleClick(event) {
     const newArray = [...pixels]
@@ -24,8 +22,7 @@ function Canvas() {
   return (
     <>
       <div className="container">
-
-        <div className='input'>
+        <div className="input">
           <div>
             <HexColorPicker color={colour} onChange={setColour} />
             <HexColorInput color={colour} onChange={setColour} />
@@ -47,9 +44,7 @@ function Canvas() {
             </div>
             <Form pixels={pixels} />
           </div>
-        
         </div>
-
       </div>
     </>
   )
