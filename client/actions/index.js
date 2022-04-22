@@ -1,11 +1,11 @@
-import { getPixels } from '../apis/fruits'
+import { getPixels } from '../apis/artwork'
 
 export const SET_PIXELS = 'SET_PIXELS'
 
 export function setPixels(pixels) {
   return {
     type: SET_PIXELS,
-    fruits,
+    pixels: pixels,
   }
 }
 
