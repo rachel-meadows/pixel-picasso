@@ -7,16 +7,24 @@ import { HexColorPicker, HexColorInput } from 'react-colorful'
 
 function Canvas() {
   const dispatch = useDispatch()
-  useEffect(() => {}, [])
+
+  const [pixel, setPixel] = useState(1)
+
+  useEffect(() => {
+    const audioName = Math.floor(Math.random() * 50)
+    const audio = new Audio(`/music/piano-0${audioName}.mp3`)
+    const newArray = [...pixels]
+    newArray[pixel] = colour
+    setPixels(newArray)
+    audio.play()
+  }, [pixel])
 
   const [pixels, setPixels] = useState(Array(400).fill('#ffffff'))
 
-  const [colour, setColour] = useState('#000000')
+  const [colour, setColour] = useState('#ffffff')
 
   function handleClick(event) {
-    const newArray = [...pixels]
-    newArray[event.target.id] = colour
-    setPixels(newArray)
+    setPixel(event.target.id)
   }
 
   return (
@@ -36,7 +44,6 @@ function Canvas() {
                   id={index}
                   style={{ backgroundColor: pixel }}
                   className="canvas__pixel"
-                  // onDragEnter={handleClick}
                   onDragOver={handleClick}
                   draggable={true}
                 ></div>
