@@ -11,7 +11,8 @@ function Canvas() {
   const [pixel, setPixel] = useState(1)
 
   useEffect(() => {
-    const audio = new Audio('/music/neigh-3.mp3')
+    const audioName = Math.floor(Math.random() * 50)
+    const audio = new Audio(`/music/piano-0${audioName}.mp3`)
     const newArray = [...pixels]
     newArray[pixel] = colour
     setPixels(newArray)
@@ -20,7 +21,7 @@ function Canvas() {
 
   const [pixels, setPixels] = useState(Array(400).fill('#ffffff'))
 
-  const [colour, setColour] = useState('#000000')
+  const [colour, setColour] = useState('#ffffff')
 
   function handleClick(event) {
     setPixel(event.target.id)
