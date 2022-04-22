@@ -88,3 +88,16 @@ header {
 .gallery__container {
   margin-bottom: 3em;
 }
+
+.addButton {
+  background-color: rgb(15, 166, 93);
+  padding: 8px 20px;
+  border: none;
+  border-radius: 2px;
+}
+
+.inputField {
+  padding: 5px 20px;
+  margin-right: 10px;
+  color: black;
+}

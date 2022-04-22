@@ -18,9 +18,8 @@ function Form(props) {
 
   return (
     <form onSubmit={handleSubmit} >
-      <input onChange={handleChange} value = {title}/>
-      Title:
-      <button> Submit! </button>
+      <input className='inputField' onChange={handleChange} placeholder='Title:' value={title} required />
+      <button className="addButton">Add art</button>
     </form>
   )
 }
