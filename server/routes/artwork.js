@@ -20,16 +20,27 @@ router.get('/', (req, res) => {
       console.log(err)
       res.status(500).json({ message: 'Something went wrong' })
     })
+})
 
-  // db.getFruits()
-  //   .then(results => {
-  //     res.json({ fruits: results.map(fruit => fruit.name) })
-  //     return null
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //     res.status(500).json({ message: 'Somthing went wrong' })
-  //   })
+router.get('/:id', (req, res) => {
+  console.log(req.params)
+  db.getSingleArtWork(Number(req.params.id))
+  
+    .then((results) => {
+      console.log(results)
+      const newData = results.map((item) => {
+        return {
+          ...item,
+          pixels: JSON.parse(item.pixels),
+        }
+      })
+      res.json(newData)
+      return null
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
 })
 
 router.post('/', (req, res) => {
