@@ -1,4 +1,4 @@
-import { getSingleArtwork, getArtwork,postArtwork, } from '../apis/artwork'
+import { getSingleArtwork, getArtwork, postArtwork } from '../apis/artwork'
 
 export const SET_ARTWORK = 'SET_ARTWORK'
 export const SET_ARTWORKS = 'SET_ARTWORKS'
@@ -19,7 +19,7 @@ export function fetchArtwork(id) {
   }
 }
 
-export function sendArtwork(artwork){
+export function sendArtwork(artwork) {
   return (dispatch) => {
     return postArtwork(artwork).then(() => {
       dispatch(fetchArtworks)
@@ -27,10 +27,10 @@ export function sendArtwork(artwork){
   }
 }
 
-export function setArtworks(artwork) {
+export function setArtworks(artworks) {
   return {
     type: SET_ARTWORKS,
-    artwork,
+    artworks,
   }
 }
 

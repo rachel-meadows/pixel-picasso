@@ -1,28 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Route, Routes } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { fetchArtworks } from '../actions'
 
 function Gallery() {
-    // const artwork = useSelector((state) => state.artwork)
+    const artworks = useSelector((state) => state.artworks)
+    console.log(artworks);
 
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //   dispatch(fetchArtwork())
-    // }, [])
-
-    const artworkMock = [{id: 1, title: 'hello', pixels: Array(400).fill('#ffffff')}, 
-    {id: 2, title: 'hello 2', pixels: Array(400).fill('#000000')}]
-    console.log('artwork', artworkMock)
-
+    const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(fetchArtworks())
+    }, [])
 
   return (
     <>
-    <h1>Page is loaded</h1>
     <div className="container, gallery__container">
       <div className="artwork">
-        {artworkMock.map((artwork, id) =>
+        {artworks.map((artwork, id) =>
         <div key={id}>
-          <h3 className="art-title">{artwork.title}</h3>
+          <Link to={`/${id+1}`}><h3 className="art-title">{artwork.title}</h3></Link>
           <div className="canvas">
             {artwork?.pixels?.map((pixel, pixelId) => (
               <div
