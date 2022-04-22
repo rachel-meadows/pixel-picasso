@@ -33,7 +33,10 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  db.addArtwork(req.body)
+  const { title, pixels } = req.body
+  const stringifyPixels = JSON.stringify(pixels)
+
+  db.addArtwork({ title, pixels: stringifyPixels })
     .then((id) => {
       res.json(id)
       return null
