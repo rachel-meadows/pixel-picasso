@@ -1,18 +1,18 @@
-import { getPixels } from '../apis/artwork'
+import { getSingleArtwork } from '../apis/artwork'
 
-export const SET_PIXELS = 'SET_PIXELS'
+export const SET_ARTWORK = 'SET_ARTWORK'
 
-export function setPixels(pixels) {
+export function setArtwork(artwork) {
   return {
-    type: SET_PIXELS,
-    pixels: pixels,
+    type: SET_ARTWORK,
+    artwork,
   }
 }
 
-export function fetchPixels() {
+export function fetchArtwork(id) {
   return (dispatch) => {
-    return getPixels().then((pixels) => {
-      dispatch(setPixels(pixels))
+    return getSingleArtwork(id).then((artwork) => {
+      dispatch(setArtwork(artwork))
       return null
     })
   }

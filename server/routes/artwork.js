@@ -22,10 +22,9 @@ router.get('/', (req, res) => {
     })
 })
 
+// get single artwork, return object
 router.get('/:id', (req, res) => {
-  console.log(req.params)
   db.getSingleArtWork(Number(req.params.id))
-  
     .then((results) => {
       console.log(results)
       const newData = results.map((item) => {
@@ -34,7 +33,7 @@ router.get('/:id', (req, res) => {
           pixels: JSON.parse(item.pixels),
         }
       })
-      res.json(newData)
+      res.json(newData[0])
       return null
     })
     .catch((err) => {

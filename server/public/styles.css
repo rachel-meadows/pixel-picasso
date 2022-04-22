@@ -50,3 +50,14 @@ header {
 
 .nav__list__item {
 }
+
+.artwork {
+  display: flex;
+  flex-direction: column;
+}
+
+.art-title {
+  font-size: 2.5rem;
+  font-family: 'IM Fell Great Primer SC', serif;
+  color: purple;
+}
