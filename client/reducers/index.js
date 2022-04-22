@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux'
 
-import pixels from './pixels'
 import artwork from './artwork'
+import artworks from './artworks'
 
 export default combineReducers({
-  pixels,
+
   artwork,
+  artworks,
 })

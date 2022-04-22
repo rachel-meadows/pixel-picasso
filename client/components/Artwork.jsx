@@ -16,9 +16,8 @@ function Artwork() {
   console.log(artwork)
 
   return (
-    <div className="container">
+    <div className="container, gallery__container">
       <div className="artwork">
-        {/* Outer container - 20x20 */}
         <h3 className="art-title">{artwork.title}</h3>
         <div className="canvas">
           {artwork?.pixels?.map((pixel) => (
