@@ -35,8 +35,6 @@ li > a {
 .canvas, .input__canvas {
   border: black 2px solid;
   display: grid;
-  grid-template-rows: repeat(20, 20px);
-  grid-template-columns: repeat(20, 20px);
 }
 
 .canvas__pixel {
@@ -100,4 +98,230 @@ header {
   padding: 5px 20px;
   margin-right: 10px;
   color: black;
+}
+
+/* Original CSS above */
+
+/*  */
+
+/* Content from etch-a-sketch below */
+
+h2 {
+  color: rgb(0, 0, 37);
+}
+
+#pageContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+}
+
+#sidebar {
+  min-width: 20vw;
+  border: 1px rgb(0, 204, 255) solid;
+  box-shadow: 0px 0px 1px rgb(0, 204, 255);
+  background-color: rgba(0, 204, 255, 0.7);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  border-radius: 5px;
+  flex-wrap: wrap;
+}
+
+hr {
+  border: none;
+  border-top: 4px rgb(223, 241, 252) double;
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+#container {
+  border: black 2px solid;
+  box-shadow: 0px 0px 1px rgb(0, 204, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  width: 80vh;
+  background-color: white;
+}
+
+.gridRow {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.gridSquare {
+  display: flex;
+  background-color: rgb(242, 252, 253);
+  border: 1px solid black;
+  flex-grow: 1;
+}
+
+#clearGrid {
+  padding: 5px 30px;
+  background-color: rgb(0, 90, 206);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.9px;
+}
+
+button {
+  font-size: 22px;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 1px 1px rgb(0, 85, 197)
+}
+
+.slidecontainer {
+  width: 100%;
+  margin-top: 10px;;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  height: 15px;
+  border-radius: 5px; 
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: rgb(0, 90, 206);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgb(0, 90, 206);
+  cursor: pointer;
+}
+
+#colorBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.optionLabel {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+form {
+  font-size: 18px;
+  text-align: left;
+  line-height: 1.5;
+}
+
+input[type=radio] {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  margin-right: 5px;
+}
+
+input[type="radio"] + label {
+  color: rgb(37, 37, 37);
+}
+
+input[type="radio"]:checked + label {
+  color: black;
+}
+
+#gridSize {
+  font-size: 15px;
+}
+
+#colorPickerContainer {
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+#colorPicker {
+  height: 25px;
+  width: 25px;
+  border: none;
+}
+
+#sizeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#tip {
+  max-width: 210px;
+  font-size: 14px;
+}
+
+@media (max-width: 800px) {
+#pageContainer {
+  flex-direction: column;
+  align-items: center;
+}
+
+#sidebar {
+  order: 1;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#container {
+  order: 2;
+  height: 90vw;
+  width: 90vw;
+}
+
+#clearGrid {
+  position: absolute;
+  bottom: 60px;
+}
+
+#tip {
+  display: none;
+}
+
+#colorBlock {
+  order: 1;
+}
+
+#opacityBlock {
+  order: 2;
+}
+
+#sizeBlock {
+  order: 3;
+}
 }
