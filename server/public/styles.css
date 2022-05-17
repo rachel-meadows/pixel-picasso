@@ -35,11 +35,11 @@ li > a {
 .canvas, .input__canvas {
   border: black 2px solid;
   display: grid;
+  width: 30vw;
+  height: 30vw;
 }
 
 .canvas__pixel {
-  width: 20px;
-  height: 20px;
   border: rgba(176, 176, 176, 0.501) 1px solid;
 }
 

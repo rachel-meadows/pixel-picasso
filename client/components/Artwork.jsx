@@ -19,7 +19,17 @@ function Artwork() {
     <div className="container, gallery__container">
       <div className="artwork">
         <h3 className="art-title">{artwork.title}</h3>
-        <div className="canvas">
+        <div
+          className="canvas"
+          style={{
+            gridTemplateRows: `repeat(${Math.sqrt(
+              artwork?.pixels?.length
+            )}, 1fr)`,
+            gridTemplateColumns: `repeat(${Math.sqrt(
+              artwork?.pixels?.length
+            )}, 1fr)`,
+          }}
+        >
           {artwork?.pixels?.map((pixel) => (
             <div
               key={hash(pixel + Math.random())}
