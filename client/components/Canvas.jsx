@@ -7,28 +7,13 @@ import { HexColorPicker, HexColorInput } from 'react-colorful'
 
 function Canvas() {
   // Initialisations and constants
-  let gridSize = 16
   let currentlyDrawing = true
+  const [gridSize, setGridSize] = useState(16)
   const [gridMemory, setGridMemory] = useState(
     Array(gridSize * gridSize).fill('#FFFFFFFF')
   )
   const [color, setColor] = useState('#000000')
   const [drawingType, setDrawingType] = useState('solid')
-
-  // useEffect(() => {
-  //   const audioName = Math.floor(Math.random() * 50)
-  //   const audio = new Audio(`/music/piano-0${audioName}.mp3`)
-  //   const newArray = [...pixels]
-  //   newArray[pixel] = color
-  //   setPixels(newArray)
-  //   audio.play()
-  // }, [pixel])
-
-  ///
-  ///
-  // Content from 'Etch-a-sketch' to merge in:
-  ///
-  ///
 
   function percentToHexHelper(percentage) {
     const percent = Math.max(0, Math.min(100, percentage))
@@ -73,23 +58,29 @@ function Canvas() {
 
   // Reset the grid
   function clearGrid() {
-    setGridMemory(gridMemory.fill('#FFFFFFFF'))
+    console.log('gridsize 2', gridSize)
+    setGridMemory(Array(gridSize * gridSize).fill('#FFFFFFFF'))
     document.querySelectorAll('.canvas__pixel').forEach((square) => {
       square.style.backgroundColor = '#FFFFFFFF'
     })
     setColor('#000000')
   }
 
-  function resizeGrid(event) {
-    // slider.oninput = function () {
-    //   gridMemorySize = this.value
-    //   output.innerHTML = this.value // Display new slider value
-    //   // Get rid of the old gridMemory
-    //   container.querySelectorAll('*').forEach((n) => n.remove())
-    //   // Make the new gridMemory
-    //   enterActiveState(gridMemorySize)
-    // }
+  function resizeGrid() {
+    let slider = document.getElementById('myRange')
+    let output = document.getElementById('gridSize')
+    output.innerHTML = slider.value // Display default slider value
+
+    slider.oninput = function () {
+      output.innerHTML = this.value // Display new slider value
+      setGridSize(this.value)
+    }
   }
+
+  // Allows re-render at proper time
+  useEffect(() => {
+    clearGrid()
+  }, [gridSize])
 
   return (
     <>
@@ -127,7 +118,7 @@ function Canvas() {
                 <p className="optionLabel">Grid size:</p>
                 <span id="gridSize"></span>
               </div>
-              <div className="slidecontainer" onClick={handleClick}>
+              <div className="slidecontainer">
                 <input
                   onChange={resizeGrid}
                   type="range"
@@ -157,6 +148,7 @@ function Canvas() {
                 gridTemplateRows: `repeat(${gridSize}, 1fr)`,
                 gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
               }}
+              onClick={handleClick}
             >
               {gridMemory.map((pixel, index) => (
                 <div
