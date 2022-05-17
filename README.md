@@ -17,9 +17,9 @@ Most of these improvements have been adapted from [my existing Etch a Sketch pro
 
 ## Using this project
 
-You can see this site in action on [Github Pages](https://rachel-meadows.github.io/pixel-picasso).
+I plan to deploy this project to a hosting service soon.
 
-If you would like to run it locally, use these commands:
+In the meantime, you can run it locally using these commands:
 
 ```
 git clone https://github.com/rachel-meadows/pixel-picasso
