@@ -6,15 +6,6 @@ import Form from './Form'
 import { HexColorPicker, HexColorInput } from 'react-colorful'
 
 function Canvas() {
-  // useEffect(() => {
-  //   const audioName = Math.floor(Math.random() * 50)
-  //   const audio = new Audio(`/music/piano-0${audioName}.mp3`)
-  //   const newArray = [...pixels]
-  //   newArray[pixel] = colour
-  //   setPixels(newArray)
-  //   audio.play()
-  // }, [pixel])
-
   // Initialisations and constants
   let gridSize = 16
   let currentlyDrawing = true
@@ -26,13 +17,14 @@ function Canvas() {
   const [gridMemory, setGridMemory] = useState(
     Array(gridSize * gridSize).fill('#ffffff')
   )
-  const [colour, setColour] = useState('#000000')
+  const [color, setColor] = useState('#000000')
+  const [opacity, setOpacity] = useState('ff')
 
   // useEffect(() => {
   //   const audioName = Math.floor(Math.random() * 50)
   //   const audio = new Audio(`/music/piano-0${audioName}.mp3`)
   //   const newArray = [...pixels]
-  //   newArray[pixel] = colour
+  //   newArray[pixel] = color
   //   setPixels(newArray)
   //   audio.play()
   // }, [pixel])
@@ -46,11 +38,10 @@ function Canvas() {
   // Draw on the grid
   function handleHoverPen(event) {
     if (currentlyDrawing === true) {
-      // Highlight the mouseover gridMemory square
-      cellCount += 0.2
-      colorOpacityChoice = `rgba(${colorChoice + (opacityChoice + cellCount)})`
-      gridMemory[Number(event.target.id)] = colorOpacityChoice
-      event.target.style.backgroundColor = colorOpacityChoice
+      // const colorWithOpacity = `#${opacityChoice}${color.split(2)}`
+      // cellCount += 0.2
+      gridMemory[Number(event.target.id)] = color
+      event.target.style.backgroundColor = color
       console.log('gridMemory: ', gridMemory)
     }
   }
@@ -106,8 +97,8 @@ function Canvas() {
       <div className="container">
         <div className="input">
           <div>
-            <HexColorPicker color={colour} onChange={setColour} />
-            <HexColorInput color={colour} onChange={setColour} />
+            <HexColorPicker color={color} onChange={setColor} />
+            <HexColorInput color={color} onChange={setColor} />
             <form id="opacityBlock">
               <p className="optionLabel">Opacity:</p>
               <div>
