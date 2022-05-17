@@ -9,16 +9,11 @@ function Canvas() {
   // Initialisations and constants
   let gridSize = 16
   let currentlyDrawing = true
-  let opacityChoice = 1
-  let colorChoice = '1, 1, 1, '
-  let colorOpacityChoice = `rgba(${colorChoice + opacityChoice})`
-  let cellCount = 0
-
   const [gridMemory, setGridMemory] = useState(
-    Array(gridSize * gridSize).fill('#ffffff')
+    Array(gridSize * gridSize).fill('#FFFFFFFF')
   )
   const [color, setColor] = useState('#000000')
-  const [opacity, setOpacity] = useState('ff')
+  const [drawingType, setDrawingType] = useState('solid')
 
   // useEffect(() => {
   //   const audioName = Math.floor(Math.random() * 50)
@@ -35,14 +30,31 @@ function Canvas() {
   ///
   ///
 
+  function percentToHexHelper(percentage) {
+    const percent = Math.max(0, Math.min(100, percentage))
+    // Map percent to nearest integer (0 - 255)
+    const intValue = Math.round((percent / 100) * 255)
+    const hexValue = intValue.toString(16)
+    return hexValue.padStart(2, '0').toUpperCase()
+  }
+
   // Draw on the grid
   function handleHoverPen(event) {
     if (currentlyDrawing === true) {
-      // const colorWithOpacity = `#${opacityChoice}${color.split(2)}`
-      // cellCount += 0.2
-      gridMemory[Number(event.target.id)] = color
-      event.target.style.backgroundColor = color
-      console.log('gridMemory: ', gridMemory)
+      if (drawingType === 'solid') {
+        gridMemory[Number(event.target.id)] = color
+        event.target.style.backgroundColor = color
+      } else {
+        const percentageMultiplier = 10
+        // Increment the 'data-hovercount' attribute and increase opacity by 10%
+        const hoverCount = Number(event.target.getAttribute('data-hovercount'))
+        event.target.setAttribute('data-hovercount', hoverCount + 1)
+        const opacity = percentToHexHelper(
+          (hoverCount + 1) * percentageMultiplier
+        )
+        event.target.style.backgroundColor = `${color}${opacity}`
+        gridMemory[Number(event.target.id)] = `${color}${opacity}`
+      }
     }
   }
 
@@ -55,33 +67,20 @@ function Canvas() {
     }
   }
 
-  // Change pen to a new opacity level
-  function handleOpacityChange(event) {
-    if (event.target.text == 'fade') {
-      opacityChoice = 0.1
-    } else {
-      opacityChoice = 1
-    }
-    colorOpacityChoice = `rgba(${colorChoice + opacityChoice})`
+  function changeDrawingType(event) {
+    setDrawingType(event.target.id)
   }
 
   // Reset the grid
   function clearGrid() {
-    setGridMemory(gridMemory.fill('#ffffff'))
+    setGridMemory(gridMemory.fill('#FFFFFFFF'))
     document.querySelectorAll('.canvas__pixel').forEach((square) => {
-      square.style.backgroundColor = '#ffffff'
+      square.style.backgroundColor = '#FFFFFFFF'
     })
-
-    //   document.getElementById('black').checked = true
-    //   document.getElementById('solid').checked = true
-    //   opacityChoice = 1
-    //   colorChoice = '1, 1, 1, '
-    //   colorOpacityChoice = `rgba(${colorChoice + opacityChoice})`
-    // })
+    setColor('#000000')
   }
 
   function resizeGrid(event) {
-    console.log(event.target.value)
     // slider.oninput = function () {
     //   gridMemorySize = this.value
     //   output.innerHTML = this.value // Display new slider value
@@ -107,13 +106,19 @@ function Canvas() {
                   name="opacity"
                   value="Solid"
                   id="solid"
-                  checked={true}
-                  onChange={handleOpacityChange}
+                  defaultChecked
+                  onClick={changeDrawingType}
                 />
                 <label htmlFor="solid">Solid</label>
               </div>
               <div>
-                <input type="radio" name="opacity" value="Fade" id="fade" />
+                <input
+                  type="radio"
+                  name="opacity"
+                  value="Fade"
+                  id="fade"
+                  onClick={changeDrawingType}
+                />
                 <label htmlFor="fade">Fade</label>
               </div>
             </form>
@@ -161,6 +166,7 @@ function Canvas() {
                   className="canvas__pixel"
                   onMouseOver={handleHoverPen}
                   onTouchStart={handleHoverPen}
+                  data-hovercount={0}
                 ></div>
               ))}
             </div>
