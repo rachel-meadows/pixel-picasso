@@ -8,7 +8,12 @@ function addArtwork (art, db = connection) {
   return db('artwork').insert(art)
 }
 
+function getSingleArtWork(id, db = connection) {
+  return db('artwork').where('id', id).select()
+}
+
 module.exports = {
   getArtwork,
-  addArtwork
+  addArtwork,
+  getSingleArtWork,
 }

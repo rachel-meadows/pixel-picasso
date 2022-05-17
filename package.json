@@ -43,6 +43,7 @@
     "hash-string": "^1.0.0",
     "knex": "^1.0.2",
     "pg": "^8.5.1",
+    "react-colorful": "^5.5.1",
     "superagent": "^6.1.0"
   },
   "devDependencies": {
