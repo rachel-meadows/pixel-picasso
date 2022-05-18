@@ -13,13 +13,14 @@ Most of these improvements have been adapted from [my existing Etch a Sketch pro
 - Ability to 'fork' or remix an image from the gallery
 - Ability to edit or delete an image
 - Testing using Jest and React Testing Library
-- Deployment to Heroku
 
 ## Using this project
 
-I plan to deploy this project to a hosting service soon.
+You can view the project, and add your own artworks, at https://pixel-picasso.herokuapp.com.
 
-In the meantime, you can run it locally using these commands:
+The project was deployed using Heroku's free tier, so it may take several seconds to load on the first pageload.
+
+Alternatively, you can run the site locally using these commands:
 
 ```
 git clone https://github.com/rachel-meadows/pixel-picasso
