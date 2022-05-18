@@ -55,7 +55,6 @@ function Canvas() {
 
   // Reset the grid
   function clearGrid() {
-    console.log('gridsize 2', gridSize)
     setGridMemory(Array(gridSize * gridSize).fill('#FFFFFFFF'))
     document.querySelectorAll('.canvas__pixel').forEach((square) => {
       square.style.backgroundColor = '#FFFFFFFF'
