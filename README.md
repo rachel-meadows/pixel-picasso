@@ -1,30 +1,33 @@
-# Fullstack boilerplate
+# Pixel Picasso
 
-## Getting Started
+## Origins and Future Plans
 
-### From the Github UI
+This project started life as a one-day hackathon, where I worked with four other students to plan and build a working MVP in less than 24 hours.
 
-See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use Github's feature to create a new repo from a template.
+I have since cloned the project to this repo and made some adjustments, such as:
+- Adding the ability to use a 'shading' brush with cumulative opacity
+- Ability to clear the canvas
+- Ability to resize the canvas
 
-### From the command line
+Most of these improvements have been adapted from [my existing Etch a Sketch project](https://github.com/rachel-meadows/etch-a-sketch). In the future I would like to add more features, such as:
+- Ability to 'fork' or remix an image from the gallery
+- Ability to edit or delete an image
+- Testing using Jest and React Testing Library
+- Deployment to Heroku
+
+## Using this project
+
+I plan to deploy this project to a hosting service soon.
+
+In the meantime, you can run it locally using these commands:
 
 ```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
-cd [your-project-name]
+git clone https://github.com/rachel-meadows/pixel-picasso
+cd pixel-picasso
 npm install # to install dependencies
+npm run knex migrate:latest # to create the database
+npm run knex seed:run # to insert the seed data
 npm run dev # to start the dev server
 ```
 
-You can find the server running on [http://localhost:3000](http://localhost:3000).
-
-## Details
-
-This repo includes:
-
-- a single, simple API endpoint (`/api/v1/fruits`)
-- a single React component (`<App />`)
-- an example database module (`server/db/fruits.js`)
-- an API client module (`client/apis/fruits.js`)
-- configuration for Jest and testing library
-- configuration for server-side debugging in VS Code
-- a single client-side test (`client/components/App.test.js`)
+The server will then be running on [http://localhost:3000](http://localhost:3000).
