@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchPixels } from '../actions'
 import hash from 'hash-string'
 import Form from './Form'
 import { HexColorPicker, HexColorInput } from 'react-colorful'
 
 function Canvas() {
-  // Initialisations and constants
   let currentlyDrawing = true
   const [gridSize, setGridSize] = useState(16)
   const [gridMemory, setGridMemory] = useState(
@@ -86,59 +83,9 @@ function Canvas() {
     <>
       <div className="container">
         <div className="input">
-          <div>
+          <div className="input__leftColumn">
             <HexColorPicker color={color} onChange={setColor} />
             <HexColorInput color={color} onChange={setColor} />
-            <form id="opacityBlock">
-              <p className="optionLabel">Opacity:</p>
-              <div>
-                <input
-                  type="radio"
-                  name="opacity"
-                  value="Solid"
-                  id="solid"
-                  defaultChecked
-                  onClick={changeDrawingType}
-                />
-                <label htmlFor="solid">Solid</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="opacity"
-                  value="Fade"
-                  id="fade"
-                  onClick={changeDrawingType}
-                />
-                <label htmlFor="fade">Fade</label>
-              </div>
-            </form>
-            <div id="sizeBlock">
-              <div id="sizeContainer">
-                <p className="optionLabel">Grid size:</p>
-                <span id="gridSize"></span>
-              </div>
-              <div className="slidecontainer">
-                <input
-                  onChange={resizeGrid}
-                  type="range"
-                  min="5"
-                  max="30"
-                  value={gridSize}
-                  className="slider"
-                  id="myRange"
-                />
-              </div>
-              <button id="clearGrid" onClick={clearGrid}>
-                Clear
-              </button>
-              <p id="tip">
-                <em>
-                  <strong>Tip:</strong> Click the canvas to start or stop
-                  drawing.
-                </em>
-              </p>
-            </div>
           </div>
 
           <div className="input__column">
@@ -163,6 +110,60 @@ function Canvas() {
               ))}
             </div>
             <Form pixels={gridMemory} />
+          </div>
+
+          <div className="input__rightColumn">
+            <form id="opacityBlock">
+              <h2 className="optionLabel">Opacity:</h2>
+              <div>
+                <input
+                  type="radio"
+                  name="opacity"
+                  value="Solid"
+                  id="solid"
+                  defaultChecked
+                  onClick={changeDrawingType}
+                />
+                <label htmlFor="solid">Solid</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="opacity"
+                  value="Fade"
+                  id="fade"
+                  onClick={changeDrawingType}
+                />
+                <label htmlFor="fade">Fade</label>
+              </div>
+            </form>
+
+            <div id="sizeBlock">
+              <div id="sizeContainer">
+                <h2 className="optionLabel">Grid size:</h2>
+                <span id="gridSize"></span>
+              </div>
+              <div className="slidecontainer">
+                <input
+                  onChange={resizeGrid}
+                  type="range"
+                  min="5"
+                  max="30"
+                  value={gridSize}
+                  className="slider"
+                  id="myRange"
+                />
+              </div>
+            </div>
+
+            <button id="clearGrid" onClick={clearGrid}>
+              Clear
+            </button>
+            <p id="tip">
+              <em>
+                <strong>Tip:</strong> Click the canvas to start or stop drawing.
+              </em>
+            </p>
           </div>
         </div>
       </div>
