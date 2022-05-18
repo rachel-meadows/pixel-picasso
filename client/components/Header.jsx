@@ -15,9 +15,6 @@ function Header() {
         <li className="nav__list__title">
           <Link to="/gallery">Gallery</Link>
         </li>
-        <li className="nav__list__title">
-          <Link to="/about">About</Link>
-        </li>
       </ul>
     </header>
   )
